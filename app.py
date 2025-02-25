@@ -23,6 +23,7 @@ def root_func_post():
     
     if 'img_name' in request.files: # ここにある
         #フォルダーの中身を削除
+        os.makedirs(UPLOAD_FOLDER, exist_ok=True)
         files = os.listdir(UPLOAD_FOLDER)
         for file in files:
             os.remove(os.path.join(UPLOAD_FOLDER, file))
