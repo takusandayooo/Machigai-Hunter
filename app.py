@@ -23,7 +23,7 @@ def root_func_post():
     
     if 'img_name' in request.files: # ここにある
         #フォルダーの中身を削除
-        files = os.listdir(g)
+        files = os.listdir(UPLOAD_FOLDER)
         for file in files:
             os.remove(os.path.join(UPLOAD_FOLDER, file))
         files = request.files.getlist('img_name')
@@ -42,4 +42,4 @@ def result_get():
 
 if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0",port=4000)
